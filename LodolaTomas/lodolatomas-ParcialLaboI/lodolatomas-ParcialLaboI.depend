@@ -1,0 +1,45 @@
+# depslib dependency file v1.0
+1570544179 source:d:\lodolatomas\lodolatomas-parciallaboi\actor.c
+	"actor.h"
+
+1570544179 d:\lodolatomas\lodolatomas-parciallaboi\actor.h
+	"inputs.h"
+
+1570545130 source:d:\lodolatomas\lodolatomas-parciallaboi\elenco.c
+	"elenco.h"
+
+1570545099 d:\lodolatomas\lodolatomas-parciallaboi\elenco.h
+	"actor.h"
+	"pelicula.h"
+
+1570543483 source:d:\lodolatomas\lodolatomas-parciallaboi\genero.c
+	"genero.h"
+
+1570543483 d:\lodolatomas\lodolatomas-parciallaboi\genero.h
+	<string.h>
+
+1570545099 source:d:\lodolatomas\lodolatomas-parciallaboi\main.c
+	<stdio.h>
+	<stdlib.h>
+	"elenco.h"
+
+1570544020 source:d:\lodolatomas\lodolatomas-parciallaboi\pelicula.c
+	"pelicula.h"
+
+1570543932 d:\lodolatomas\lodolatomas-parciallaboi\pelicula.h
+	"inputs.h"
+	"genero.h"
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+
+1570536105 d:\lodolatomas\lodolatomas-parciallaboi\inputs.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<time.h>
+
+1570536105 source:d:\lodolatomas\lodolatomas-parciallaboi\inputs.c
+	"inputs.h"
+
