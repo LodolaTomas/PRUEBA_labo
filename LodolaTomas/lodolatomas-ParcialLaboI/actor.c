@@ -313,7 +313,7 @@ int actor_ModificarActor(eActor* list,int lenActor)
                     break;
                 }
 
-            borrar();
+                borrar();
             }
             while(respuesta!=4);
 
@@ -400,25 +400,25 @@ void actor_OrdenarNombreApellido(eActor* list,int lenActor)
         {
             if(list[i].estado==OCUPADO && list[j].estado==OCUPADO)
             {
-                    if(strcmp(list[i].nombre,list[j].nombre)>0)
-                    {
-                        auxActor = list[i];
-                        list[i] = list[j];
-                        list[j] = auxActor;
-                    }
+                if(strcmp(list[i].nombre,list[j].nombre)>0)
+                {
+                    auxActor = list[i];
+                    list[i] = list[j];
+                    list[j] = auxActor;
+                }
 
-                    else
+                else
+                {
+                    if(strcmp(list[i].nombre,list[j].nombre)==0)
                     {
-                        if(strcmp(list[i].nombre,list[j].nombre)==0)
+                        if(strcmp(list[i].apellido,list[j].apellido)>0)
                         {
-                            if(strcmp(list[i].apellido,list[j].apellido)>0)
-                            {
-                                auxActor = list[i];
-                                list[i] = list[j];
-                                list[j] = auxActor;
-                            }
+                            auxActor = list[i];
+                            list[i] = list[j];
+                            list[j] = auxActor;
                         }
                     }
+                }
             }
         }
 
@@ -459,11 +459,11 @@ eActor actor_ElejitActor(eActor* list,int lenActor)
             retorno=list[actor];
             break;
         }
-            borrar();
-            printf("Ese Actor No fue Encontrado\n");
-            pausa();
-            borrar();
-            continue;
+        borrar();
+        printf("Ese Actor No fue Encontrado\n");
+        pausa();
+        borrar();
+        continue;
     }
 
     return retorno;
@@ -476,7 +476,7 @@ int actor_ActoresDisponibles(eActor* list,int lenActor)
 
     if(list!=NULL && lenActor!=0)
     {
-        for(i=0;i<lenActor;i++)
+        for(i=0; i<lenActor; i++)
         {
             if(list[i].estado==OCUPADO)
             {
@@ -485,5 +485,25 @@ int actor_ActoresDisponibles(eActor* list,int lenActor)
         }
 
     }
+    return retorno;
+}
+eActor actor_ObtenerActor(eActor* list,int lenActor,int codigo)
+{
+    eActor retorno;
+    int i;
+
+    if(list!=NULL && lenActor!=0 && codigo>=0)
+    {
+        for(i=0; i<lenActor; i++)
+        {
+            if(list[i].codigo==codigo)
+            {
+                retorno=list[i];
+                break;
+            }
+        }
+
+    }
+
     return retorno;
 }

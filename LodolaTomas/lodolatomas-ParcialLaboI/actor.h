@@ -40,3 +40,5 @@ int actor_ListarActor(eActor* list,int lenActor);
 eActor actor_ElejitActor(eActor* list,int lenActor);
 
 int actor_ActoresDisponibles(eActor* list,int lenActor);
+
+eActor actor_ObtenerActor(eActor* list,int lenActor,int codigo);

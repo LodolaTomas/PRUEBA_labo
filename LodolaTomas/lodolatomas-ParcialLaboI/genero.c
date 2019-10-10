@@ -6,10 +6,10 @@ void genero_hardCodear(eGenero*list, int lenGenero)
 {
     int i;
 
-    int id[]={100,101,102,103};
-    char descripcion[][51]={"Accion","Terror","Romance","Suspenso"};
+    int id[]= {100,101,102,103};
+    char descripcion[][51]= {"Accion","Terror","Romance","Suspenso"};
 
-    for(i=0;i<lenGenero;i++)
+    for(i=0; i<lenGenero; i++)
     {
         list[i].id=id[i];
         strcpy(list[i].descripcion,descripcion[i]);
@@ -24,18 +24,36 @@ int genero_BuscarGenero(eGenero* list,int lenGenero,int idGenero)
 
     if(list!=NULL && lenGenero!=0)
     {
-            for(i=0;i<lenGenero;i++)
+        for(i=0; i<lenGenero; i++)
+        {
+            if(list[i].id==idGenero)
             {
-                if(list[i].id==idGenero)
-                {
-                    retorno=i;
-                    break;
-                }
+                retorno=i;
+                break;
             }
+        }
 
     }
 
     return retorno;
+}
+eGenero genero_ObtenerGenero(eGenero* list,int lenGenero,int idGenero)
+{
+    eGenero retorno;
+    int i;
 
+    if(list!=NULL && lenGenero!=0)
+    {
+        for(i=0; i<lenGenero; i++)
+        {
+            if(list[i].id==idGenero)
+            {
+                retorno=list[i];
+                break;
+            }
+        }
 
+    }
+
+    return retorno;
 }

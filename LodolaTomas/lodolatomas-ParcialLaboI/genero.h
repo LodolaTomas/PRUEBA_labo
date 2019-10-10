@@ -5,8 +5,9 @@ typedef struct
     int id;
     char descripcion[51];
 
-}eGenero;
+} eGenero;
 
 
 void genero_hardCodear(eGenero*list, int lenGenero);
 int genero_BuscarGenero(eGenero* list,int lenGenero,int idGenero);
+eGenero genero_ObtenerGenero(eGenero* list,int lenGenero,int idGenero);
