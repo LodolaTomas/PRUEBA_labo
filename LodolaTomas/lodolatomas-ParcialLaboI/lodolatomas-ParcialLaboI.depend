@@ -2,6 +2,8 @@
 1570544179 source:d:\lodolatomas\lodolatomas-parciallaboi\actor.c
 	"actor.h"
 
+1570536105 
+
 1570544179 d:\lodolatomas\lodolatomas-parciallaboi\actor.h
 	"inputs.h"
 
@@ -11,6 +13,8 @@
 1570545099 d:\lodolatomas\lodolatomas-parciallaboi\elenco.h
 	"actor.h"
 	"pelicula.h"
+
+1570544020 h"
 
 1570543483 source:d:\lodolatomas\lodolatomas-parciallaboi\genero.c
 	"genero.h"
@@ -42,4 +46,48 @@
 
 1570536105 source:d:\lodolatomas\lodolatomas-parciallaboi\inputs.c
 	"inputs.h"
+
+1570669069 source:/home/tomas/Escritorio/progLabo1/PRUEBA_labo/LodolaTomas/lodolatomas-ParcialLaboI/actor.c
+	"actor.h"
+
+1570667444 /home/tomas/Escritorio/progLabo1/PRUEBA_labo/LodolaTomas/lodolatomas-ParcialLaboI/actor.h
+	"inputs.h"
+
+1570650758 /home/tomas/Escritorio/progLabo1/PRUEBA_labo/LodolaTomas/lodolatomas-ParcialLaboI/inputs.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<time.h>
+
+1570666661 source:/home/tomas/Escritorio/progLabo1/PRUEBA_labo/LodolaTomas/lodolatomas-ParcialLaboI/elenco.c
+	"elenco.h"
+
+1570671096 /home/tomas/Escritorio/progLabo1/PRUEBA_labo/LodolaTomas/lodolatomas-ParcialLaboI/elenco.h
+	"actor.h"
+	"pelicula.h"
+
+1570662309 /home/tomas/Escritorio/progLabo1/PRUEBA_labo/LodolaTomas/lodolatomas-ParcialLaboI/pelicula.h
+	"inputs.h"
+	"genero.h"
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+
+1570622066 /home/tomas/Escritorio/progLabo1/PRUEBA_labo/LodolaTomas/lodolatomas-ParcialLaboI/genero.h
+	<string.h>
+
+1570662959 source:/home/tomas/Escritorio/progLabo1/PRUEBA_labo/LodolaTomas/lodolatomas-ParcialLaboI/genero.c
+	"genero.h"
+
+1570650734 source:/home/tomas/Escritorio/progLabo1/PRUEBA_labo/LodolaTomas/lodolatomas-ParcialLaboI/inputs.c
+	"inputs.h"
+
+1570661230 source:/home/tomas/Escritorio/progLabo1/PRUEBA_labo/LodolaTomas/lodolatomas-ParcialLaboI/main.c
+	<stdio.h>
+	<stdlib.h>
+	"elenco.h"
+
+1570666312 source:/home/tomas/Escritorio/progLabo1/PRUEBA_labo/LodolaTomas/lodolatomas-ParcialLaboI/pelicula.c
+	"pelicula.h"
 

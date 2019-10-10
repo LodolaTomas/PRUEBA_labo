@@ -1,14 +1,10 @@
 #include "actor.h"
 
-void actor_Menu(eActor* list,int lenActor)
+void actor_Menu(eActor* list,int lenActor,int *id)
 {
     int opcion;
     int respuesta;
-    int id=0;
-    int flag=0;
-
-    actor_InicializarActores(list,lenActor);
-    actor_HardCodearActores(list,5,&id);
+    int flag=1;
 
     do
     {
@@ -49,25 +45,23 @@ void actor_Menu(eActor* list,int lenActor)
                 case -1:
                     borrar();
                     printf("No se encontro el Actor o No hay Actores Cargados\n");
-                    pausa();
                     break;
                 case 0:
                     borrar();
                     printf("Actor Modificado\n");
-                    pausa();
                     break;
                 case 1:
                     borrar();
                     printf("Accion cancelada por el usuario\n");
-                    pausa();
                     break;
                 }
             }
             else
             {
                 printf("Debe cargar Actores Antes de Modificar uno\n");
-                pausa();
+
             }
+            pausa();
             break;
         case 3:
             borrar();
@@ -79,25 +73,22 @@ void actor_Menu(eActor* list,int lenActor)
                 case -1:
                     borrar();
                     printf("No se encontro el Actor o No hay Actores Cargados\n");
-                    pausa();
                     break;
                 case 0:
                     borrar();
                     printf("Actor Borrado\n");
-                    pausa();
                     break;
                 case 1:
                     borrar();
                     printf("Accion cancelada por el usuario\n");
-                    pausa();
                     break;
                 }
             }
             else
             {
                 printf("Debe cargar Actores Antes de Darlos de Baja\n");
-                pausa();
             }
+            pausa();
             break;
         case 4:
             borrar();
@@ -108,15 +99,13 @@ void actor_Menu(eActor* list,int lenActor)
                 {
                 case -1:
                     borrar();
-                    printf("EROR. listaDeAlumnos == NULL || MAX_ACTOR == 0\n");
-                    pausa();
+                    printf("EROR. listaDeAlumnos es NULL o MAX_ACTOR es 0\n");
                     break;
                 }
             }
             else
             {
                 printf("Debe cargar Actores Antes de Ordenarlos\n");
-                pausa();
             }
             pausa();
             break;
@@ -135,13 +124,13 @@ void actor_HardCodearActores(eActor* list,int lenActor,int* Codigo)
 {
     int i;
     int id=*Codigo;
-    char nombres[][50]={"Nicolas","Vin","Charlie","Will","Joaquin"};
-    char apellidos[][50]={"Cage","Diesel","Sheen","Smith","Fenix"};
-    char sexo[]={'M','M', 'M', 'M','M'};
+    char nombres[][50]= {"Tommy","Natalie","Penelope","Will","Joaquin","Robert","Jennifer","Tom","Leonardo","Cameron","Robert","Johnny","Emma","Anthony","Julia","Marlyn","Hilary","Anne","Jim","Uma"};
+    char apellidos[][50]= {"Lee Jones","Portman","Cruz","Smith","Fenix","De Niro","Lawrence","Hanks","DiCaprio","Diaz","Downey Jr.","Depp","Watson","Hopkins","Roberts","Monroe","Swank","Hathaway","Carrey","Thurman"};
+    char sexo[]= {'M','F', 'F', 'M','M','M','F','M','M','F','M','M','F','M','F','F','F','F','M','F'};
 
     if( list!=NULL && lenActor!=0)
     {
-        for(i=0;i<lenActor;i++)
+        for(i=0; i<lenActor; i++)
         {
             list[i].codigo=id;
             strcpy(list[i].nombre,nombres[i]);
@@ -164,7 +153,7 @@ int actor_InicializarActores(eActor* list,int lenActor)
     if(list!=NULL && lenActor!=0)
     {
         retorno=0;
-        for(i=0;i<lenActor;i++)
+        for(i=0; i<lenActor; i++)
         {
             list[i].estado=LIBRE;
         }
@@ -181,9 +170,9 @@ int actor_BuscarLibre(eActor* list,int lenActor)
 
     if(list!=NULL && lenActor!=0)
     {
-        for(i=0;i<lenActor;i++)
+        for(i=0; i<lenActor; i++)
         {
-            if(list[i].codigo==LIBRE)
+            if(list[i].estado==LIBRE)
             {
                 retorno=i;
                 break;
@@ -196,33 +185,35 @@ int actor_BuscarLibre(eActor* list,int lenActor)
     return retorno;
 }
 
-int actor_Agregar(eActor* list,int lenActor,int* codigo)
+int actor_Agregar(eActor* list,int lenActor,int** codigo)
 {
     int retorno=-1;
-    int idActor=*codigo;
     int lugar=actor_BuscarLibre(list,lenActor);
-
     eActor auxActor;
+    int idActor=**codigo;
 
     if(list!=NULL && lenActor!=0 && lugar!=-1)
     {
 
         auxActor.codigo=idActor;
-        getValidString("Ingrese Nombre: ","Error, solo letras",0,50,auxActor.nombre);
-        getValidString("Ingrese Apellido: ","Error, solo letras",0,50,auxActor.apellido);
-        getValidSex(auxActor.sexo);
+        getValidName("Ingrese Nombre: ","Error, solo letras",0,50,auxActor.nombre);
+        getValidName("Ingrese Apellido: ","Error, solo letras",0,50,auxActor.apellido);
+        cleanStdin();
+        getValidSex(&auxActor.sexo);
         auxActor.estado=OCUPADO;
         borrar();
+        printf("*******************************************************************************\n");
         actor_MostrarUnActor(auxActor);
+        printf("*******************************************************************************\n");
         if(verifyConformity("Esta seguro que desea guardar este actor?[Si/No]: ","Error, Ingrese [Si/No]")==1)
         {
             list[lugar]=auxActor;
             retorno=0;
             idActor++;
-            *codigo=idActor;
+            **codigo=idActor;
         }
-        else{
-
+        else
+        {
             retorno=1;
         }
 
@@ -237,7 +228,7 @@ int actor_Agregar(eActor* list,int lenActor,int* codigo)
 void actor_MostrarUnActor(eActor unActor)
 {
 
-    printf("%5d %10s %10s %10c",unActor.codigo,unActor.nombre,unActor.apellido,unActor.sexo);
+    printf("%5d %20s %15s %10c\n",unActor.codigo,unActor.nombre,unActor.apellido,unActor.sexo);
 }
 
 void actor_MostarActores(eActor* list,int lenActor)
@@ -246,16 +237,17 @@ void actor_MostarActores(eActor* list,int lenActor)
 
     if(list!=NULL && lenActor!=0)
     {
-        printf("%5s %10s %10s %10s","Cod.", "Nombre","Apellido","Sexo");
-        for(i=0;i<lenActor;i++)
+        printf("*******************************************************************************\n");
+        printf("%5s %20s %15s %10s\n","Cod.", "Nombre","Apellido","Sexo");
+        printf("*******************************************************************************\n");
+        for(i=0; i<lenActor; i++)
         {
             if(list[i].estado==OCUPADO)
             {
                 actor_MostrarUnActor(list[i]);
             }
         }
-
-
+        printf("*******************************************************************************\n");
     }
 }
 
@@ -276,15 +268,16 @@ int actor_ModificarActor(eActor* list,int lenActor)
         actor_MostarActores(list,lenActor);
         getValidInt("Ingrese el Cod. del Actor a Modificar: ","Cuidado, Solo los Codigod",0,lenActor,&opcion);
         idActor=actor_BuscarCodigo(list,lenActor,opcion);
-
+        borrar();
         if(idActor!=-1)
         {
             auxActor=list[idActor];
 
             do
             {
-
+                printf("*******************************************************************************\n");
                 actor_MostrarUnActor(auxActor);
+                printf("*******************************************************************************\n");
                 getValidInt("1- Nombre\n2- Apellido\n3- Sexo\n4- Volver al menu\nEliga una opcion: ","Cuidado, solo ingrese numeros",1,4,&respuesta);
 
                 switch(respuesta)
@@ -300,12 +293,15 @@ int actor_ModificarActor(eActor* list,int lenActor)
                     break;
                 case 3:
                     borrar();
-                    getValidSex(auxActor.sexo);
+                    cleanStdin();
+                    getValidSex(&auxActor.sexo);
                     break;
                 case 4:
                     borrar();
+                    printf("*******************************************************************************\n");
                     actor_MostrarUnActor(auxActor);
-                    if(verifyConformity("Esta seguro que desea guardar los cabios[Si/No]: ","Cuidado, [Si/No]")==1)
+                    printf("*******************************************************************************\n");
+                    if(verifyConformity("Esta seguro que desea guardar los cambios[Si/No]: ","Cuidado, [Si/No]")==1)
                     {
                         list[idActor]=auxActor;
                         retorno=0;
@@ -317,7 +313,7 @@ int actor_ModificarActor(eActor* list,int lenActor)
                     break;
                 }
 
-
+            borrar();
             }
             while(respuesta!=4);
 
@@ -336,7 +332,9 @@ int actor_BuscarCodigo(eActor* list,int lenActor,int Codigo)
 
     if(list!=NULL && lenActor!=0 && Codigo>=0)
     {
-            for(i=0;i<lenActor;i++)
+        for(i=0; i<lenActor; i++)
+        {
+            if(list[i].estado==OCUPADO)
             {
                 if(list[i].codigo==Codigo)
                 {
@@ -344,6 +342,7 @@ int actor_BuscarCodigo(eActor* list,int lenActor,int Codigo)
                     break;
                 }
             }
+        }
 
     }
 
@@ -364,11 +363,14 @@ int actor_BorrarActor(eActor* list,int lenActor)
         actor_MostarActores(list,lenActor);
         getValidInt("Elija el Actor a dar de baja: ","Cuidado, solo el Codigo del Actor",0,lenActor,&iActor);
         respuesta=actor_BuscarCodigo(list,lenActor,iActor);
+        borrar();
         if(respuesta!=-1)
         {
             auxActor=list[respuesta];
             borrar();
+            printf("*******************************************************************************\n");
             actor_MostrarUnActor(auxActor);
+            printf("*******************************************************************************\n");
             if(verifyConformity("Esta seguro que quiere darlo de baja?[Si/No]: ","Cudiado, responda[Si/No]")==1)
             {
                 retorno=0;
@@ -396,24 +398,27 @@ void actor_OrdenarNombreApellido(eActor* list,int lenActor)
     {
         for(j=i+1; j<lenActor; j++)
         {
-            if(strcmp(list[i].nombre,list[j].nombre)>0)
+            if(list[i].estado==OCUPADO && list[j].estado==OCUPADO)
             {
-                auxActor = list[i];
-                list[i] = list[j];
-                list[j] = auxActor;
-            }
-
-            else
-            {
-                if(strcmp(list[i].nombre,list[j].nombre)==0)
-                {
-                    if(strcmp(list[i].apellido,list[j].apellido)>0)
+                    if(strcmp(list[i].nombre,list[j].nombre)>0)
                     {
                         auxActor = list[i];
                         list[i] = list[j];
                         list[j] = auxActor;
                     }
-                }
+
+                    else
+                    {
+                        if(strcmp(list[i].nombre,list[j].nombre)==0)
+                        {
+                            if(strcmp(list[i].apellido,list[j].apellido)>0)
+                            {
+                                auxActor = list[i];
+                                list[i] = list[j];
+                                list[j] = auxActor;
+                            }
+                        }
+                    }
             }
         }
 
@@ -428,30 +433,57 @@ int actor_ListarActor(eActor* list,int lenActor)
 
     if(list!=NULL && lenActor!=0)
     {
-       printf("%20s","LISTAR");
+        printf("%20s\n","LISTAR");
 
-
-       actor_OrdenarNombreApellido(list,lenActor);
-
-       actor_MostarActores(list,lenActor);
+        retorno=0;
+        //actor_OrdenarNombreApellido(list,lenActor);
+        actor_MostarActores(list,lenActor);
 
     }
-
-
     return retorno;
 }
 
 eActor actor_ElejitActor(eActor* list,int lenActor)
 {
-     eActor retorno;
+    eActor retorno;
     int opcion;
+    int actor;
 
-    if(list!=NULL && lenActor!=0 )
+    while(list!=NULL && lenActor!=0 )
     {
         actor_MostarActores(list,lenActor);
-        getValidInt("Ingrese El Actor: ","Error. solo los cod de las peliculas",0,lenActor,&opcion);
-        retorno=list[opcion];
+        getValidInt("Ingrese El Actor: ","Error. solo los cod. de los Actores",0,lenActor,&opcion);
+        actor=actor_BuscarCodigo(list,lenActor,opcion);
+        if(actor!=-1)
+        {
+            retorno=list[actor];
+            break;
+        }
+            borrar();
+            printf("Ese Actor No fue Encontrado\n");
+            pausa();
+            borrar();
+            continue;
     }
 
+    return retorno;
+}
+
+int actor_ActoresDisponibles(eActor* list,int lenActor)
+{
+    int i;
+    int retorno=0;
+
+    if(list!=NULL && lenActor!=0)
+    {
+        for(i=0;i<lenActor;i++)
+        {
+            if(list[i].estado==OCUPADO)
+            {
+                retorno++;
+            }
+        }
+
+    }
     return retorno;
 }

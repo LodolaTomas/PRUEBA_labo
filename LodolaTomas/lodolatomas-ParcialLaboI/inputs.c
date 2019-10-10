@@ -23,9 +23,12 @@ int getInt(char* message)
 char getChar(char* message)
 {
     char aux;
+
     printf("%s",message);
-    fflush(stdin);
+
     scanf("%c",&aux);
+    //fgetc(stdin);
+
     return aux;
 }
 
@@ -76,14 +79,18 @@ int isNumeric(char str[])
 
 int isJustLetters(char str[])
 {
-    int i=0;
-    while(str[i] != '\0')
+    int i;
+    int isValid = 1;
+    i = 0;
+    while(str[i]!='\0')
     {
-        if((str[i] != ' ') && (str[i] < 'a' || str[i] > 'z') && (str[i] < 'A' || str[i] > 'Z'))
-            return 0;
+        if((str[i] < 'a' || str[i] > 'z') && (str[i] < 'A' || str[i] > 'Z') && str[i] != ' ')
+        {
+            isValid = 0;
+        }
         i++;
     }
-    return 1;
+    return isValid;
 }
 
 
@@ -124,14 +131,19 @@ int isTelephone(char str[])
 void getString(char message[],char input[])
 {
     printf("%s",message);
-    scanf ("%s", input);
+    fflush(stdin);
+    scanf("%s",input);
 }
 
 
 int getStringLetters(char message[],char input[])
 {
     char aux[256];
-    getString(message,aux);
+
+    printf("%s",message);
+    fgetc(stdin);
+    scanf("%[^\n]",aux);
+
     if(isJustLetters(aux))
     {
         strcpy(input,aux);
@@ -259,12 +271,43 @@ void getValidString(char requestMessage[],char errorMessage[],int lowLimit, int 
             printf ("El caracter del debe ser mayor a %d y menor a %d\n",lowLimit,hiLimit);
             continue;
         }
-        stringToLower(auxString);
+
         firstToUpper(auxString);
+
         strcpy(input,auxString);//si cumple con todas las  normativas recien lo asigno a input
         break;
     }
 
+}
+
+void getValidName(char requestMessage[],char errorMessage[],int lowLimit, int hiLimit, char* input)
+{
+    int lenString;//verifica que sea el largo correspondiente
+
+    char auxString[256];//sino hago un aux me dice que hay un desbordamiento en la pila
+    //*** stack smashing detected ***: <unknown> terminated Aborted (core dumped)
+
+
+    while(1)
+    {
+        if (!getStringLetters(requestMessage,auxString))
+        {
+            printf ("%s\n",errorMessage);
+            continue;
+        }
+
+        lenString=strlen(auxString);
+
+        if(lenString < lowLimit || lenString > hiLimit)
+        {
+            printf ("El caracter del debe ser mayor a %d y menor a %d\n",lowLimit,hiLimit);
+            continue;
+        }
+        firstToUpper(auxString);
+
+        strcpy(input,auxString);//si cumple con todas las  normativas recien lo asigno a input
+        break;
+    }
 }
 
 void firstToUpper(char name[])
@@ -322,28 +365,23 @@ int verifyConformity (char message[], char cancelMessage[])
     return save;
 }
 
-void getSex(char input)
-{
-    char letter; //guardara el sexo
-    printf("Ingrese sexo (F/M) : ");
-    fflush(stdin);
-    scanf("%c", &letter);
-    letter=toupper(letter);
-    input= letter;
-}
 
-void getValidSex(char letter)
-{
-    char auxSex='z'; //guardara el sexo
 
-    getSex(auxSex);
+void getValidSex(char* letter)
+{
+    char auxSex; //guardara el sexo
+
+    auxSex=getChar("Ingrese sexo (F/M) : ");
+
+    auxSex=toupper(auxSex);
 
     while (auxSex!='F' && auxSex!='M')
     {
         printf("Error, el sexo ingresado es incorrecto. \n\n");
-        getSex(auxSex);
+        auxSex=getChar("Ingrese sexo (F/M) : ");
+        auxSex=toupper(auxSex);
     }
-    letter=auxSex;
+    *letter=auxSex;
 }
 
 void pausa()

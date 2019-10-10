@@ -22,7 +22,7 @@ int genero_BuscarGenero(eGenero* list,int lenGenero,int idGenero)
     int retorno=-1;
     int i;
 
-    if(list!=NULL && lenGenero!=0 && idGenero>=0)
+    if(list!=NULL && lenGenero!=0)
     {
             for(i=0;i<lenGenero;i++)
             {

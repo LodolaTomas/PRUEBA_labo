@@ -166,8 +166,11 @@ void stringToUpper (char[]);
  */
 void stringToLower (char[]);
 
-void getSex(char);
-void getValidSex(char);
+void getValidName(char requestMessage[],char errorMessage[],int lowLimit, int hiLimit, char* input);
+
+void cleanStdin(void);
+
+void getValidSex(char* letter);
 
 int verifyConformity (char message[], char cancelMessage[]);
 

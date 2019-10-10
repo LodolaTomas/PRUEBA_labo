@@ -4,9 +4,9 @@ void pelicula_HardCodeoPeliculas(ePelicula* list,int lenPeliculas,int* codP)
 {
     int i;
     int id=*codP;
-    char descripcion[][51]={"Avengers","Joker","IT","Aladin"};
-    float duracion[]={264,124,59.5,165} ;
-    int genero[]={100,101,102,103};
+    char descripcion[][51]={"Avengers: End Game","Joker","IT","Aladin","Kill Bill","Titanic","El llanero Solitario","Proyecto Geminis","Batman","Amor a Quemarropa","Los indestructibles","El Juez","La Mascara","Los juegos del Hambre"};
+    int duracion[]={181,123,135,128,247,195,149,117,152,123,152,252,120} ;
+    int genero[]={100,101,102,103,101,103,100,100,101,103,101,102,103};
 
     if(list !=NULL && lenPeliculas!=0)
     {
@@ -29,12 +29,14 @@ ePelicula pelicula_ElejirPelicula(ePelicula* list,int lenPeliculas,eGenero* list
 {
     ePelicula retorno;
     int opcion;
+    int pelicula;
 
     if(list!=NULL && lenPeliculas!=0 && listG!=NULL && lenGenero!=0)
     {
         pelicula_MostrarPeliculas(list,lenPeliculas,listG,lenGenero);
-        getValidInt("Ingrese La Pelicula","Error. solo los cod de las peliculas",1,4,&opcion);
-        retorno=list[opcion];
+        getValidInt("Ingrese La Pelicula: ","Error. solo los cod de las peliculas",0,lenPeliculas-1,&opcion);
+        pelicula=pelicula_BuscarPelicula(list,lenPeliculas,opcion);
+        retorno=list[pelicula];
 
     }
 
@@ -45,8 +47,9 @@ void pelicula_MostrarPeliculas(ePelicula* list,int lenPeliculas,eGenero* listG,i
 
     int i;
     int index;
-
-    printf("\n%5s %5s %5s %5s \n","Cod.","Descripcion","Duracion","Genero");
+    printf("\n*******************************************************************************\n");
+    printf("%s %30s %18s %12s\n\n","Cod.","Descripcion","Duracion","Genero");
+    printf("*******************************************************************************\n");
     for(i=0; i<lenPeliculas; i++)
     {
             index  = genero_BuscarGenero(listG,lenGenero,list[i].idGenero);
@@ -56,11 +59,33 @@ void pelicula_MostrarPeliculas(ePelicula* list,int lenPeliculas,eGenero* listG,i
             }
 
     }
+    printf("*******************************************************************************");
     printf("\n");
 
 }
 
 void pelicula_MostarUnaPelicula(ePelicula unaPelicula,eGenero unGenero)
 {
-    printf("%5d %5s %5.2f %5s",unaPelicula.codigo,unaPelicula.descripcion,unaPelicula.duracion,unGenero.descripcion);
+    printf("%d %35s %10d %15s\n",unaPelicula.codigo,unaPelicula.descripcion,unaPelicula.duracion,unGenero.descripcion);
+}
+
+int pelicula_BuscarPelicula(ePelicula* list,int lenPeliculas,int codigo)
+{
+     int retorno=-1;
+    int i;
+
+    if(list!=NULL && lenPeliculas!=0 && codigo>=0)
+    {
+        for(i=0; i<lenPeliculas; i++)
+        {
+            if(list[i].codigo==codigo)
+            {
+                retorno=i;
+                break;
+            }
+        }
+
+    }
+
+    return retorno;
 }

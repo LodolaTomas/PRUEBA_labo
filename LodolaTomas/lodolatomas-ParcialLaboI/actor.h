@@ -11,9 +11,9 @@ typedef struct
     char sexo;
     int estado;
 
-}eActor;
+} eActor;
 
-void actor_Menu(eActor* list,int lenActor);
+void actor_Menu(eActor* list,int lenActor,int *id);
 
 void actor_HardCodearActores(eActor* list,int lenActor,int* Codigo);
 
@@ -21,7 +21,7 @@ int actor_InicializarActores(eActor* list,int lenActor);
 
 int actor_BuscarLibre(eActor* list,int lenActor);
 
-int actor_Agregar(eActor* list,int lenActor,int* codigo);
+int actor_Agregar(eActor* list,int lenActor,int** codigo);
 
 void actor_MostrarUnActor(eActor unActor);
 
@@ -38,3 +38,5 @@ void actor_OrdenarNombreApellido(eActor* list,int lenActor);
 int actor_ListarActor(eActor* list,int lenActor);
 
 eActor actor_ElejitActor(eActor* list,int lenActor);
+
+int actor_ActoresDisponibles(eActor* list,int lenActor);
