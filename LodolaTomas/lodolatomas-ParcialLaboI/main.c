@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 #include "elenco.h"
 
 #define MAX_ACTOR 25
 #define MAX_PELI 13
 #define MAX_GENE 4
-#define MAX_ELENCO 10
+#define MAX_ELENCO 20
 
 int main()
 {
@@ -17,14 +16,12 @@ int main()
     ePelicula listaDePeliculas[MAX_PELI];
     eGenero listaDeGenero[MAX_GENE];
     eElenco listaDeElenco[MAX_ELENCO];
-
     elenco_InicializarElenco(listaDeElenco,MAX_ELENCO);
-    elenco_HardcodeElenco(listaDeElenco,10);
+    elenco_HardcodeElenco(listaDeElenco,10);//OPCIONAL
     genero_hardCodear(listaDeGenero,MAX_GENE);
     pelicula_HardCodeoPeliculas(listaDePeliculas,MAX_PELI,&idPeliculas);
     actor_InicializarActores(listaDeActores,MAX_ACTOR);
-    actor_HardCodearActores(listaDeActores,20,&idActores);
-
+    actor_HardCodearActores(listaDeActores,20,&idActores);//OPCIONAL
     do
     {
         getValidInt("1- Gestion de Actores\n2- Gestion de Elenco\n3- Salir\nElija una Opcion: ","Eror, solo numeros",1,3,&opcion);
@@ -43,10 +40,8 @@ int main()
             printf("Bish spater");
             break;
         }
-
         borrar();
     }
     while(opcion!=3);
-
     return 0;
 }

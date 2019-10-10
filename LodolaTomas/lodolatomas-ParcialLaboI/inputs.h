@@ -168,6 +168,12 @@ void stringToLower (char[]);
 
 void getValidName(char requestMessage[],char errorMessage[],int lowLimit, int hiLimit, char* input);
 
+/**
+ * \brief Limpia el stdin, similar a fflush
+ * \param -
+ * \return -
+ *
+ */
 void cleanStdin(void);
 
 void getValidSex(char* letter);

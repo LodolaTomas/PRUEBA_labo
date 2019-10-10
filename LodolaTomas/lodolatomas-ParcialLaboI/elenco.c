@@ -6,7 +6,6 @@ void elenco_HardcodeElenco(eElenco* listE,int lenElenco)
     int codActor[]={0,12,14,2,5,17,19,8,9,12};
     float valorContrato[]={30000,2000,500000,9000,20000,10000,30000,2000,500000,9000};
     int codPelicula[]={12,10,12,7,8,4,10,8,4,7};
-
     for(i=0;i<lenElenco;i++)
     {
         listE[i].codigoDeActor=codActor[i];
@@ -36,36 +35,30 @@ int elenco_AltaElenco(eElenco* listE,int lenElenco,eActor* listaA,int lenA,ePeli
         borrar();
         auxActor=actor_ElejitActor(listaA,lenA);
         borrar();
-
         if(elenco_BuscarIgualdad(listE,lenElenco,auxActor,auxPelicula)!=-1)
         {
             getValidFloat("Ingrese el valor del contrato: ","Error solo numeros",0,1000000000000000,&listE[iElenco].valorContrato);
             borrar();
-            printf("*******************************************************************************\n");
+            printf("***********************************************************************************************************\n");
             elenco_MostrarUnElenco(listE[iElenco],auxActor,auxPelicula,auxGenero);
-            printf("*******************************************************************************\n");
+            printf("***********************************************************************************************************\n");
             if(verifyConformity("esta seguro que desea crear este elenco?[Si/No]: ","Error, solo [Si/No]")==1)
             {
                 retorno=0;
                 listE[iElenco].codigoDeActor=auxActor.codigo;
                 listE[iElenco].codigoDePelicula=auxPelicula.codigo;
                 listE[iElenco].estado=OCUPADO;
-
             }
             else
             {
-
                 retorno=1;
             }
-
         }
         else
         {
             retorno=-2;
         }
-
     }
-
     return retorno;
 }
 
@@ -80,9 +73,7 @@ int elenco_InicializarElenco(eElenco* list,int lenElenco)
         {
             list[i].estado=LIBRE;
         }
-
     }
-
     return retorno;
 }
 
@@ -90,7 +81,6 @@ int elenco_BuscarLibre(eElenco* list,int lenElenco)
 {
     int retorno=-1;
     int i;
-
     if(list!=NULL && lenElenco!=0)
     {
         for(i=0; i<lenElenco; i++)
@@ -101,10 +91,7 @@ int elenco_BuscarLibre(eElenco* list,int lenElenco)
                 break;
             }
         }
-
     }
-
-
     return retorno;
 }
 
@@ -112,7 +99,6 @@ void elenco_menu(eElenco* listE,int lenElenco,eActor* listaA,int lenA,ePelicula*
 {
     int opcion;
     int respuesta;
-
     do
     {
         getValidInt("1. Alta Elenco\n2. Mostrar Elencos\n3. Salir\nElija una opcion: ","Error, solo numeros[1-3]",1,3,&opcion);
@@ -158,25 +144,20 @@ void elenco_menu(eElenco* listE,int lenElenco,eActor* listaA,int lenA,ePelicula*
             borrar();
             break;
         case 3:
-
             break;
         }
         borrar();
     }
     while(opcion!=3);
-
     printf("ADIOS VUELVA PRONTOS\n");
-
 }
 
 void elenco_MostarElencos(eElenco* listE,int lenElenco,eActor* listaA,int lenA,ePelicula* listP,int lenP,eGenero* listG,int lenG)
 {
     int i;
-
     ePelicula auxPelicula;
     eActor auxActor;
     eGenero auxGenero;
-
     if(listE!=NULL && lenElenco!=0 && listaA!=NULL && lenA!=0 && listP!=NULL && lenP!=0 && listG!=NULL && lenG!=0)
     {
         printf("***********************************************************************************************************\n");
@@ -184,7 +165,6 @@ void elenco_MostarElencos(eElenco* listE,int lenElenco,eActor* listaA,int lenA,e
         printf("***********************************************************************************************************\n");
         for(i=0; i<lenElenco; i++)
         {
-
             if(listE[i].estado==OCUPADO)
             {
                 auxActor=actor_ObtenerActor(listaA,lenA,listE[i].codigoDeActor);
@@ -195,7 +175,6 @@ void elenco_MostarElencos(eElenco* listE,int lenElenco,eActor* listaA,int lenA,e
         }
         printf("***********************************************************************************************************\n");
     }
-
 }
 void elenco_MostrarUnElenco(eElenco unElenco,eActor unActor,ePelicula unaPelicula,eGenero unGenero)
 {
@@ -216,7 +195,6 @@ int elenco_BuscarIgualdad(eElenco* listE,int lenElenco,eActor elActor,ePelicula 
             }
         }
     }
-
     return retorno;
 }
 void elenco_OrdenarPorPeliculaActor(eElenco* listE,int lenElenco,eActor* listaA,int lenA,ePelicula* listP,int lenP)
@@ -227,7 +205,6 @@ void elenco_OrdenarPorPeliculaActor(eElenco* listE,int lenElenco,eActor* listaA,
     ePelicula auxPelicula2;
     eActor auxActor;
     eActor auxActor2;
-
     for(i=0; i<lenElenco-1; i++)
     {
         for(j=i+1; j<lenElenco; j++)
