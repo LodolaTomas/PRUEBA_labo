@@ -442,7 +442,7 @@ int actor_ActoresDisponibles(eActor* list,int lenActor)
 }
 eActor actor_ObtenerActor(eActor* list,int lenActor,int codigo)
 {
-    eActor retorno;
+    eActor retorno;//Preguntar para inicializarlo
     int i;
     if(list!=NULL && lenActor!=0 && codigo>=0)
     {

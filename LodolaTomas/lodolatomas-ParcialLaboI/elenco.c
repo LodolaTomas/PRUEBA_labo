@@ -37,7 +37,7 @@ int elenco_AltaElenco(eElenco* listE,int lenElenco,eActor* listaA,int lenA,ePeli
         borrar();
         if(elenco_BuscarIgualdad(listE,lenElenco,auxActor,auxPelicula)!=-1)
         {
-            getValidFloat("Ingrese el valor del contrato: ","Error solo numeros",0,1000000000000000,&listE[iElenco].valorContrato);
+            getValidFloat("Ingrese el valor del contrato: ","Error solo numeros",0,10000000000,&listE[iElenco].valorContrato);
             borrar();
             printf("***********************************************************************************************************\n");
             elenco_MostrarUnElenco(listE[iElenco],auxActor,auxPelicula,auxGenero);

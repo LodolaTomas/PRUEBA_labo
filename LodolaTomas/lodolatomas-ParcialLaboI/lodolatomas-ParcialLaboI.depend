@@ -47,23 +47,24 @@
 1570536105 source:d:\lodolatomas\lodolatomas-parciallaboi\inputs.c
 	"inputs.h"
 
-1570677464 source:/home/tomas/Escritorio/progLabo1/PRUEBA_labo/LodolaTomas/lodolatomas-ParcialLaboI/actor.c
+1570681347 source:/home/tomas/Escritorio/progLabo1/PRUEBA_labo/LodolaTomas/lodolatomas-ParcialLaboI/actor.c
 	"actor.h"
 
-1570680505 /home/tomas/Escritorio/progLabo1/PRUEBA_labo/LodolaTomas/lodolatomas-ParcialLaboI/actor.h
+1571087549 /home/tomas/Escritorio/progLabo1/PRUEBA_labo/LodolaTomas/lodolatomas-ParcialLaboI/actor.h
 	"inputs.h"
+	<stdio.h>
 
-1570650758 /home/tomas/Escritorio/progLabo1/PRUEBA_labo/LodolaTomas/lodolatomas-ParcialLaboI/inputs.h
+1570681347 /home/tomas/Escritorio/progLabo1/PRUEBA_labo/LodolaTomas/lodolatomas-ParcialLaboI/inputs.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<ctype.h>
 	<time.h>
 
-1570676894 source:/home/tomas/Escritorio/progLabo1/PRUEBA_labo/LodolaTomas/lodolatomas-ParcialLaboI/elenco.c
+1571087323 source:/home/tomas/Escritorio/progLabo1/PRUEBA_labo/LodolaTomas/lodolatomas-ParcialLaboI/elenco.c
 	"elenco.h"
 
-1570675551 /home/tomas/Escritorio/progLabo1/PRUEBA_labo/LodolaTomas/lodolatomas-ParcialLaboI/elenco.h
+1570681089 /home/tomas/Escritorio/progLabo1/PRUEBA_labo/LodolaTomas/lodolatomas-ParcialLaboI/elenco.h
 	"actor.h"
 	"pelicula.h"
 
@@ -77,17 +78,17 @@
 1570680505 /home/tomas/Escritorio/progLabo1/PRUEBA_labo/LodolaTomas/lodolatomas-ParcialLaboI/genero.h
 	<string.h>
 
-1570673190 source:/home/tomas/Escritorio/progLabo1/PRUEBA_labo/LodolaTomas/lodolatomas-ParcialLaboI/genero.c
+1570681346 source:/home/tomas/Escritorio/progLabo1/PRUEBA_labo/LodolaTomas/lodolatomas-ParcialLaboI/genero.c
 	"genero.h"
 
-1570650734 source:/home/tomas/Escritorio/progLabo1/PRUEBA_labo/LodolaTomas/lodolatomas-ParcialLaboI/inputs.c
+1570681347 source:/home/tomas/Escritorio/progLabo1/PRUEBA_labo/LodolaTomas/lodolatomas-ParcialLaboI/inputs.c
 	"inputs.h"
 
-1570677464 source:/home/tomas/Escritorio/progLabo1/PRUEBA_labo/LodolaTomas/lodolatomas-ParcialLaboI/main.c
+1570681347 source:/home/tomas/Escritorio/progLabo1/PRUEBA_labo/LodolaTomas/lodolatomas-ParcialLaboI/main.c
 	<stdio.h>
 	<stdlib.h>
 	"elenco.h"
 
-1570675756 source:/home/tomas/Escritorio/progLabo1/PRUEBA_labo/LodolaTomas/lodolatomas-ParcialLaboI/pelicula.c
+1570681347 source:/home/tomas/Escritorio/progLabo1/PRUEBA_labo/LodolaTomas/lodolatomas-ParcialLaboI/pelicula.c
 	"pelicula.h"
 

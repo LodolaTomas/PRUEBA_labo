@@ -1,4 +1,5 @@
 #include "inputs.h"
+#include <stdio.h>
 #define OCUPADO 1
 #define LIBRE 0
 
